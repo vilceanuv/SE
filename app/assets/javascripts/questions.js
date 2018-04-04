@@ -5,7 +5,7 @@ $(document).ready(function(){
 			url: 'questions/next_question',
 			data: {
 				id: $('.question-text').data('question-id'),
-				value: 0
+				value: 1
 			},
 			contentType: "application/json; charset=utf-8",
 			type: 'GET',
@@ -27,7 +27,7 @@ $(document).ready(function(){
 			url: 'questions/next_question',
 			data: {
 				id: $('.question-text').data('question-id'),
-				value: 1
+				value: 0
 			},
 			contentType: "application/json; charset=utf-8",
 			type: 'GET',

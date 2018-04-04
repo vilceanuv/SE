@@ -18,7 +18,9 @@ class QuestionsController < ApplicationController
     res = {}
 
     ids = []
-    celebrities = if(params[:id].to_i >= 4 && params[:id].to_i <= 6)
+    puts "params id => #{params[:id]}"
+    puts "params value => #{params[:value]}"
+    celebrities = if(params[:id].to_i >= 4 && params[:id].to_i <= 10)
                     ActiveRecord::Base.connection.execute(questions_attributes[params[:id].to_i])
                   else
                     ActiveRecord::Base.connection.execute(questions_attributes[params[:id].to_i] + params[:value].to_s)
@@ -26,13 +28,19 @@ class QuestionsController < ApplicationController
     celebrities.each do |c|
       ids << c.first
     end
-    puts "CELEBRITIES"
-    puts ids
-        puts "PARAMS"
-        puts params.to_yaml
-        puts "CACHE"
-        puts session[:celebrities]
-    session[:celebrities] = session[:celebrities] - ids
+    puts "ids => #{ids}" 
+    puts "session celebrities => #{session[:celebrities]}"
+    if params[:id].to_i >= 4 && params[:id].to_i <= 10
+      if params[:value] == '1'
+        session[:celebrities] = session[:celebrities] & ids
+      else
+        session[:celebrities] = session[:celebrities] - ids
+      end
+    else
+      session[:celebrities] = session[:celebrities] & ids
+    end
+
+    puts "celebrities after => #{session[:celebrities]}"
     if session[:celebrities].size == 1
       res['name'] = Celebrity.find(session[:celebrities].first).name
     end
@@ -58,7 +66,14 @@ class QuestionsController < ApplicationController
     {1 => 'SELECT * FROM celebrities where male = ', 
      2 => 'SELECT * FROM celebrities where real_person = ',
      3 => 'SELECT * FROM celebrities where dead = ',
-     4 => "SELECT * FROM celebrities where domain = 'singer'"
+     4 => "SELECT * FROM celebrities where domain = 'singer'",
+     5 => "SELECT * FROM celebrities where domain = 'political figure'",
+     6 => "SELECT * FROM celebrities where domain = 'sportsman'",
+     7 => "SELECT * FROM celebrities where domain = 'actor'",
+     8 => "SELECT * FROM celebrities where nationality = 'American'",
+     9 => "SELECT * FROM celebrities where nationality = 'Romanian'",
+     10 => "SELECT * FROM celebrities where skin_color = 'black'",
+     11 => "SELECT * FROM celebrities where age > 35"
     }
   end
 
