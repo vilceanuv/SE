@@ -1,3 +1,32 @@
 .question-div{
 	display: none;
 }
+
+#yes-button{
+	width: 60px;
+	height: 30px;
+	background-color: green;
+	color: white;
+	border: 1px solid limegreen;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+#no-button{
+	width: 60px;
+	height: 30px;
+	background-color: darkred;
+	color: white;
+	border: 1px solid red;
+	border-radius: 4px;
+	cursor: pointer;
+
+}
+
+.question-text{
+	font-size: 20px;
+}
+
+#container-div{
+	text-align: center;
+}

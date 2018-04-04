@@ -1,8 +1,9 @@
 <p id="notice"><%= notice %></p>
+<div id='containers-container'>
+<div id='celebs-container'>
+<h1>Choose a celebrity</h1>
 
-<h1>Celebrities</h1>
-
-<table>
+<table style='margin:auto;'>
   <thead>
     <tr>
       <th colspan="3"></th>
@@ -12,18 +13,16 @@
   <tbody>
     <% @celebrities.each do |celebrity| %>
       <tr>
-        <td><%= celebrity.name %>
-        <td><%= link_to 'Show', celebrity %></td>
-        <td><%= link_to 'Edit', edit_celebrity_path(celebrity) %></td>
-        <td><%= link_to 'Destroy', celebrity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= celebrity.name %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<%= link_to 'Let us guess', questions_path, id: 'to-quest-button' %>
 
-
+</div>
+</div>
 
 <br>
 
-<%= link_to 'New Celebrity', new_celebrity_path %>
-<%= link_to 'Questions', questions_path %>
+

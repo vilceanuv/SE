@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
 	$("#yes-button").click(function(){
 		$.ajax({
 			url: 'questions/next_question',
@@ -13,7 +12,9 @@ $(document).ready(function(){
 			success: function(data){
 				console.log(data['qst']);
 				if(data['name'] != undefined){
-					$('.question-text').text(data['name']);					
+					$('.question-text').text(data['name']);
+					$('#yes-button').remove();
+					$('#no-button').remove();					
  				}else{
 					$('.question-text').text(data['qst']);
 				}
@@ -35,7 +36,9 @@ $(document).ready(function(){
 			success: function(data){
 				console.log(data['qst']);
 				if(data['name'] != undefined){
-					$('.question-text').text(data['name']);					
+					$('.question-text').text(data['name']);
+					$('#yes-button').remove();
+					$('#no-button').remove();					
  				}else{
 					$('.question-text').text(data['qst']);
 				}

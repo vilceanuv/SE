@@ -1,0 +1,25 @@
+#celebs-container{
+	text-align: center;
+	display: inline-block;
+	margin: auto;
+}
+
+#containers-container{
+	text-align: center;
+}
+
+#to-quest-button{
+	background-color: white;
+	color: darkgrey;
+	border: 1px solid darkgrey;
+	padding: 5px;
+	font-size: 20px;
+	text-decoration: none;
+	border-radius: 4px;
+}
+
+#to-quest-button:hover{
+	background-color: darkgrey;
+	color: white;
+	transition: background-color linear 200ms;
+}
